@@ -8,7 +8,6 @@ Requirements
 
 `django-appconf`
 
-`Django <https://www.djangoproject.com/>`_ 1.3 or later
 
 Installation
 ------------
@@ -21,8 +20,13 @@ Installation
 Setup
 -----
 
-Just add ``'brokenlinks'`` to INSTALLED_APPS and set the BROKENLINKS_LOG_PATH in
-your settings.py::
+1. Add ``'brokenlinks'`` to INSTALLED_APPS
+2. Add ``'brokenlinks.middleware.BrokenLinkEmailsMiddleware'`` to ``MIDDLEWARE_CLASSES``
+3. Set the ``BROKENLINKS_LOG_PATH``
+4. After change in brokenlinks configs run ``manage.py createbrokenlinksconfs`` once and use the result conf-files with fail2ban 
+ 
+your settings.py will look like below:
+
 
     INSTALLED_APPS = (
         # ...
@@ -30,7 +34,13 @@ your settings.py::
         # ...
     )
 
+    MIDDLEWARE_CLASSES= (
+        'brokenlinks.middleware.BrokenLinkEmailsMiddleware',
+        # ...
+    )
+    
     BROKENLINKS_LOG_PATH = '/path/to/brokenlinks.log'
+
 
 then config fail2ban to use it
 
