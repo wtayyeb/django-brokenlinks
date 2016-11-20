@@ -11,7 +11,7 @@ except IOError:
 
 setup(
     name			='django-brokenlinks',
-    version			='0.1.0',
+    version			='0.1.1',
     url				='https://github.com/wtayyeb/django-brokenlinks',
     description		='reusable django app to log crawlers hitting many 404 pages.',
     long_description=long_description,
